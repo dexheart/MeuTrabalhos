@@ -85,10 +85,10 @@ public class PPCtrab
         t4.start();
   
         // t1 finishes before t2 
-        //t1.join(); 
-        //t2.join(); 
-        //t3.join();
-        //t4.join();
+//        t1.join(); 
+//        t2.join(); 
+//        t3.join();
+//        t4.join();
     } 
   
     // This class has a list, producer (adds items to list 
@@ -113,20 +113,16 @@ public class PPCtrab
                 { 
                 	
                 	//Se o caldeirão não tiver vazio, o cozinheiro dorme
-                    while (list.size()>0) {
-                    	if(list.size()==0) {
-                    		System.out.println("Caldeirão não está vazio, cozinheiro vai dormir");
-                    	}
+                    while (list.size()!=0) {
+                		System.out.println("Caldeirão não está vazio, cozinheiro vai dormir");
+
+//                    	if(list.size()==0) {
+//                    		System.out.println("Caldeirão não está vazio, cozinheiro vai dormir");
+//                    	}
                     	wait();
                     }
-                         
-                    
-                    //System.out.println();
-
-                    
-                	
-
-                    
+             
+                    //System.out.println();          
                     //System.out.println();
                     
                     prepararJantar(list, value, contA, contB, contC);
@@ -135,12 +131,10 @@ public class PPCtrab
   
                     if(list.size()==capacidade) {
                         notifyAll();
-                        System.out.println();
                         System.out.println("Caldeirão cheio, acordar todos os canibais");
 
                     }
-                    
- 
+
                 } 
             } 
         } 
@@ -155,39 +149,27 @@ public class PPCtrab
             { 
                 synchronized (this) 
                 { 
-                	
-  	
+
                     while (list.size()==0) {
                     	System.out.println("Caldeirão vazio, O Canibal " + Y + " irá dormir");
-                    	
                         wait();
-                        System.out.println("O Canibal " + Y + " acordou");
-                        //notifyAll();
-
                     }
 
-                    servir(Y, list);                      
+                    servir(Y, list);
                     notifyAll();
                 } 
                 
-                
                 comer(Y, list);
+
                 
-//                synchronized (this) 
-//                { 
-//                	
-//  	
-//                    while (list.size()==0) {
-//                    	System.out.println("Caldeirão vazio, O Canibal " + Y + " irá dormir");
-//                    	
-//                        wait();
-//                        System.out.println("O Canibal " + Y + " acordou");
-//                        //notifyAll();
-//
-//                    }
-//                     
-//                    notifyAll();
-//                } 
+                synchronized (this) 
+                { 
+                	Thread.sleep(3000);
+                	while (list.size()==0) {
+                    	System.out.println("Caldeirão vazio, O Canibal " + Y + " irá dormir");
+                        wait();
+                    }
+                } 
                 
         
             } 
@@ -206,20 +188,20 @@ public class PPCtrab
         public void comer(String nome, LinkedList<Integer> X) throws InterruptedException {
         	System.out.println("Canibal "+ nome + " está comendo");
         	//System.out.println("... Em três segundos ...");
-        	Thread.sleep(3000);
+        	//Thread.sleep(3000);
         	
         	
         	if(nome=="A") {
             	contA++;
-            	System.out.print("O Canibal " + nome + " terminou comer.\n");
+            	//System.out.print("O Canibal " + nome + " terminou comer.\n");
             }
             else if(nome=="B") {
             	contB++;
-            	System.out.print("O Canibal " + nome + " terminou comer.\n");
+            	//System.out.print("O Canibal " + nome + " terminou comer.\n");
             }
             else if(nome=="C") {
             	contC++;
-            	System.out.print("O Canibal " + nome + " terminou comer.\n");
+            	//System.out.print("O Canibal " + nome + " terminou comer.\n");
             }
         	//System.out.println("Canibal "+ nome + " terminou de comer");
             //System.out.println("Status do caldeirão: " + X.size() + "/5");
