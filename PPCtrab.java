@@ -1,3 +1,4 @@
+package ppcWork;
 import java.util.LinkedList; 
 
 public class PPCtrab 
@@ -161,15 +162,25 @@ public class PPCtrab
                 
                 comer(Y, list);
 
+                if(Y=="A") {
+            		if(contA>contB && contA>contC) {
+            			System.out.println("Canibal A está muito guloso");
+            			Thread.sleep(2000);
+            		}
+            	}else if(Y=="B") {
+            		if(contB>contA && contB>contC) {
+            			System.out.println("Canibal B está muito guloso");
+            			Thread.sleep(2000);
+            		}
+            	}else if(Y=="C") {
+            		if(contC>contA && contC>contB) {
+            			System.out.println("Canibal C está muito guloso");
+            			Thread.sleep(2000);
+            		}
+            	}
                 
-                synchronized (this) 
-                { 
-                	Thread.sleep(3000);
-                	while (list.size()==0) {
-                    	System.out.println("Caldeirão vazio, O Canibal " + Y + " irá dormir");
-                        wait();
-                    }
-                } 
+                
+
                 
         
             } 
@@ -193,14 +204,20 @@ public class PPCtrab
         	
         	if(nome=="A") {
             	contA++;
+            	Thread.sleep(3000);
+
             	//System.out.print("O Canibal " + nome + " terminou comer.\n");
             }
             else if(nome=="B") {
             	contB++;
+            	Thread.sleep(3000);
+
             	//System.out.print("O Canibal " + nome + " terminou comer.\n");
             }
             else if(nome=="C") {
             	contC++;
+            	Thread.sleep(3000);
+
             	//System.out.print("O Canibal " + nome + " terminou comer.\n");
             }
         	//System.out.println("Canibal "+ nome + " terminou de comer");
