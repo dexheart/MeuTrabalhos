@@ -2,28 +2,15 @@ package ppcWork;
 import java.util.LinkedList; 
 
 
-
-
-
 public class PPCtrab 
 { 
-	
 	
     public static void main(String[] args) 
                         throws InterruptedException 
     { 
-        // Object of a class that has both produce() 
-        // and consume() methods 
-        
-
-    	
-    	
-    	
+        	
     	final PC pc = new PC(); 
     	
-    	
-  
-        // Create producer thread 
         Thread t1 = new Thread(new Runnable() 
         { 
             @Override
@@ -39,8 +26,7 @@ public class PPCtrab
                 } 
             } 
         }); 
-  
-        // Create consumer thread 
+        
         Thread t2 = new Thread(new Runnable() 
         { 
             @Override
@@ -89,32 +75,22 @@ public class PPCtrab
             } 
         });
   
-        // Start both threads 
         t1.start(); 
         t2.start(); 
         t3.start();
         t4.start();
   
-        // t1 finishes before t2 
-//        t1.join(); 
-//        t2.join(); 
-//        t3.join();
-//        t4.join();
     } 
   
-    // This class has a list, producer (adds items to list 
-    // and consumber (removes items). 
+
     public static class PC 
     { 
-        // Create a list shared by producer and consumer 
-        // Size of list is 2. 
+
         LinkedList<Integer> list = new LinkedList<>(); 
         int capacidade = 5; 
         
         int contA, contB, contC = 0 ;
         
-  
-        // Function called by producer thread 
         public void cozinheiro(String X) throws InterruptedException 
         { 
             int value = 0; 
@@ -178,20 +154,18 @@ public class PPCtrab
 
                 if(Y=="A") {
             		if(contA>contB && contA>contC) {
-            			Thread.sleep(1000);
+            			Thread.sleep(2000);
             		}
             	}else if(Y=="B") {
             		if(contB>contA && contB>contC) {
-            			Thread.sleep(1000);
+            			Thread.sleep(2000);
             		}
             	}else if(Y=="C") {
             		if(contC>contA && contC>contB) {
-            			Thread.sleep(1000);
+            			Thread.sleep(2000);
             		}
             	}
                 
-           
-        
             } 
         }
         
@@ -267,14 +241,11 @@ public class PPCtrab
 
     		elapsedTimeMin = elapsedTimeMillis/(60*1000F);
     		
-    		
-    		
+		
     		return elapsedTimeMin; 
-    			
-    		
+    					
         }
-       
-        
+              
     }
     
     
