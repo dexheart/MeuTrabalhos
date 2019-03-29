@@ -1,17 +1,27 @@
 package ppcWork;
 import java.util.LinkedList; 
 
+
+
+
+
 public class PPCtrab 
 { 
+	
+	
     public static void main(String[] args) 
                         throws InterruptedException 
     { 
         // Object of a class that has both produce() 
         // and consume() methods 
         
+
+    	
+    	
+    	
     	final PC pc = new PC(); 
     	
-
+    	
   
         // Create producer thread 
         Thread t1 = new Thread(new Runnable() 
@@ -108,6 +118,10 @@ public class PPCtrab
         public void cozinheiro(String X) throws InterruptedException 
         { 
             int value = 0; 
+            
+        	long start = System.currentTimeMillis();
+
+            
             while (true) 
             { 
                 synchronized (this) 
@@ -126,7 +140,7 @@ public class PPCtrab
                     //System.out.println();          
                     //System.out.println();
                     
-                    prepararJantar(list, value, contA, contB, contC);
+                    prepararJantar(list, value, contA, contB, contC, start);
                  
                     //System.out.println();
   
@@ -164,24 +178,19 @@ public class PPCtrab
 
                 if(Y=="A") {
             		if(contA>contB && contA>contC) {
-            			System.out.println("Canibal A está muito guloso");
-            			Thread.sleep(2000);
+            			Thread.sleep(1000);
             		}
             	}else if(Y=="B") {
             		if(contB>contA && contB>contC) {
-            			System.out.println("Canibal B está muito guloso");
-            			Thread.sleep(2000);
+            			Thread.sleep(1000);
             		}
             	}else if(Y=="C") {
             		if(contC>contA && contC>contB) {
-            			System.out.println("Canibal C está muito guloso");
-            			Thread.sleep(2000);
+            			Thread.sleep(1000);
             		}
             	}
                 
-                
-
-                
+           
         
             } 
         }
@@ -225,18 +234,45 @@ public class PPCtrab
 
         }
         
-        public void prepararJantar(LinkedList<Integer> X, int value, int A, int B, int C) throws InterruptedException {
+        public void prepararJantar(LinkedList<Integer> X, int value, int A, int B, int C, Long start) throws InterruptedException {
+        	float temp;
+        	
+        	
         	System.out.println("Cozinheiro Preparando a janta");
         	//System.out.println("... Em cinco segundos ...");
         	Thread.sleep(5000);
         	for(int i= 0;i<5;i++) {
                     X.add(value++); 
                }
-        	System.out.print("Cozinheiro terminou de preparar a janta \n" + "Status do caldeirão: " + X.size() + "/5" +  "\n" + " O Canibal A, comeu " + A +" vezes.\n" + " O Canibal B, comeu " + B +" vezes.\n" + " O Canibal C, comeu " + C +" vezes.\n");
+        	
+        	temp = calcTempo(start);
+        	System.out.print("Cozinheiro terminou de preparar a janta \n" + "Status do caldeirão: " + X.size() + "/5" +  "\n" + " O Canibal A, comeu " + A +" vezes.\n" + " O Canibal B, comeu " + B +" vezes.\n" + " O Canibal C, comeu " + C +" vezes.\n" + "Ocorreram exatamente " + temp + " minutos.\n");
+        	
+    		if(temp > 2) {
+    			System.out.println("||========================================================||");
+    			System.out.println("     Já se passaram 2 minutos, o Programa será fechado");
+    			System.out.println("||========================================================||");
+    			System.exit(0);
+    		}
+        	
         	
         }
         
-        
+        public float calcTempo(Long inicial) {
+        	
+        	long elapsedTimeMillis;
+        	float elapsedTimeMin;
+        	
+    		elapsedTimeMillis = System.currentTimeMillis()-inicial;
+
+    		elapsedTimeMin = elapsedTimeMillis/(60*1000F);
+    		
+    		
+    		
+    		return elapsedTimeMin; 
+    			
+    		
+        }
        
         
     }
