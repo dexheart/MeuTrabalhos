@@ -154,15 +154,15 @@ public class PPCtrab
 
                 if(Y=="A") {
             		if(contA>contB && contA>contC) {
-            			Thread.sleep(2000);
+            			Thread.sleep(3000);
             		}
             	}else if(Y=="B") {
             		if(contB>contA && contB>contC) {
-            			Thread.sleep(2000);
+            			Thread.sleep(3000);
             		}
             	}else if(Y=="C") {
             		if(contC>contA && contC>contB) {
-            			Thread.sleep(2000);
+            			Thread.sleep(3000);
             		}
             	}
                 
