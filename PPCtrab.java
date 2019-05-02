@@ -9,9 +9,9 @@ public class PPCtrab
                         throws InterruptedException 
     { 
         	
-    	final PC pc = new PC(); 
+    	final control pc = new control(); 
     	
-        Thread t1 = new Thread(new Runnable() 
+        Thread coz = new Thread(new Runnable() 
         { 
             @Override
             public void run() 
@@ -27,7 +27,7 @@ public class PPCtrab
             } 
         }); 
         
-        Thread t2 = new Thread(new Runnable() 
+        Thread c1 = new Thread(new Runnable() 
         { 
             @Override
             public void run() 
@@ -43,7 +43,7 @@ public class PPCtrab
             } 
         });
         
-        Thread t3 = new Thread(new Runnable() 
+        Thread c2 = new Thread(new Runnable() 
         { 
             @Override
             public void run() 
@@ -59,7 +59,7 @@ public class PPCtrab
             } 
         });
         
-        Thread t4 = new Thread(new Runnable() 
+        Thread c3 = new Thread(new Runnable() 
         { 
             @Override
             public void run() 
@@ -75,15 +75,16 @@ public class PPCtrab
             } 
         });
   
-        t1.start(); 
-        t2.start(); 
-        t3.start();
-        t4.start();
-  
+        c1.start(); 
+        c2.start();
+        c3.start();
+        coz.start(); 
+
+        
     } 
   
 
-    public static class PC 
+    public static class control 
     { 
 
         LinkedList<Integer> list = new LinkedList<>(); 
@@ -154,15 +155,15 @@ public class PPCtrab
 
                 if(Y=="A") {
             		if(contA>contB && contA>contC) {
-            			Thread.sleep(3000);
+            			Thread.sleep(8000);
             		}
             	}else if(Y=="B") {
             		if(contB>contA && contB>contC) {
-            			Thread.sleep(3000);
+            			Thread.sleep(8000);
             		}
             	}else if(Y=="C") {
             		if(contC>contA && contC>contB) {
-            			Thread.sleep(3000);
+            			Thread.sleep(8000);
             		}
             	}
                 
